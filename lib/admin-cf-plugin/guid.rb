@@ -1,7 +1,7 @@
-require "vmc/cli"
+require "cf/cli"
 
-module VMCAdmin
-  class Guid < VMC::CLI
+module CFAdmin
+  class Guid < CF::CLI
     def precondition
       check_target
     end

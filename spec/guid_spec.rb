@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe VMCAdmin::Guid do
+describe CFAdmin::Guid do
   let(:fake_home_dir) { "#{SPEC_ROOT}/fixtures/fake_home_dir" }
   stub_home_dir_with { fake_home_dir }
 
@@ -24,7 +24,7 @@ describe VMCAdmin::Guid do
   }}
 
   def stub_api(path, response, opts={})
-    stub = stub_request(:get, "https://api.some-target-for-vmc-curl.com#{path}")
+    stub = stub_request(:get, "https://api.some-target-for-cf-curl.com#{path}")
     response = MultiJson.dump(response) unless opts[:not_json]
     stub.to_return(:status => 200, :body => response)
   end
@@ -35,7 +35,7 @@ describe VMCAdmin::Guid do
 
       it "shows results" do
         stub_api("/v2/organizations?", api_response)
-        vmc(args)
+        cf(args)
         expect(stdout.string).to match(/name.*guid/)
       end
     end
@@ -45,7 +45,7 @@ describe VMCAdmin::Guid do
 
       it "shows results" do
         stub_api("/v2/organizations?", api_response)
-        vmc(args)
+        cf(args)
         expect(stdout.string).to match(/name.*guid/)
       end
     end
@@ -55,7 +55,7 @@ describe VMCAdmin::Guid do
 
       it "makes a request with unknown type" do
         stub_api("/v2/some-unknown-type?", api_response)
-        vmc(args)
+        cf(args)
         expect(stdout.string).to match(/name.*guid/)
       end
     end
@@ -70,7 +70,7 @@ describe VMCAdmin::Guid do
 
     it "shows 0 results" do
       stub_api("/v2/organizations?", api_response)
-      vmc(["guid", "--type", "organizations"])
+      cf(["guid", "--type", "organizations"])
       expect(stdout.string).to match(/No results/)
     end
   end
@@ -79,7 +79,7 @@ describe VMCAdmin::Guid do
     ["", "not-json"].each do |response|
       it "shows unexpected response for api resonse '#{response}'" do
         stub_api("/v2/organizations?", response, :not_json => true)
-        vmc(["guid", "--type", "organizations"])
+        cf(["guid", "--type", "organizations"])
         expect(stdout.string).to match(/Unexpected response/)
       end
     end

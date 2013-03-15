@@ -1,10 +1,10 @@
 require "spec_helper"
 
-describe VMCAdmin::Curl do
+describe CFAdmin::Curl do
   let(:fake_home_dir) { "#{SPEC_ROOT}/fixtures/fake_home_dir" }
   stub_home_dir_with { fake_home_dir }
 
-  subject { vmc ["curl", "--mode", "GET", "--path", path] }
+  subject { cf ["curl", "--mode", "GET", "--path", path] }
 
   before do
     any_instance_of(CFoundry::Client) do |client|
@@ -16,7 +16,7 @@ describe VMCAdmin::Curl do
     let(:path) { "apps/5/instances" }
 
     it "makes a request to the current target" do
-      stub_request(:get, "https://api.some-target-for-vmc-curl.com/apps/5/instances").to_return(
+      stub_request(:get, "https://api.some-target-for-cf-curl.com/apps/5/instances").to_return(
         :status => 200,
         :body => 'some-body'
       )

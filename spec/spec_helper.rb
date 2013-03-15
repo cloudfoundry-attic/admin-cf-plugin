@@ -1,13 +1,13 @@
 SPEC_ROOT = File.dirname(__FILE__).freeze
 
 require "rspec"
-require "vmc"
+require "cf"
 require "cfoundry"
 require "cfoundry/test_support"
 require "webmock/rspec"
-require "vmc/test_support"
+require "cf/test_support"
 
-require "#{SPEC_ROOT}/../lib/admin-vmc-plugin/plugin"
+require "#{SPEC_ROOT}/../lib/admin-cf-plugin/plugin"
 
 RSpec.configure do |c|
   c.include Fake::FakeMethods

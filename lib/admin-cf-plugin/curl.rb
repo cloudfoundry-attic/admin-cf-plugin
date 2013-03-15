@@ -1,7 +1,7 @@
-require "vmc/cli"
+require "cf/cli"
 
-module VMCAdmin
-  class Curl < VMC::CLI
+module CFAdmin
+  class Curl < CF::CLI
     def precondition
       check_target
     end

@@ -1,35 +1,31 @@
 GIT
-  remote: git://github.com/cloudfoundry/vmc-lib.git
-  revision: 873e1614f4513fd0e8885f42b9f0c15f1b3d1a89
-  submodules: true
+  remote: git://github.com/cloudfoundry/cf.git
+  revision: e574b781732e2cad3d186e3d46fe60991ff81697
   specs:
-    cfoundry (0.5.3.rc5)
-      cf-uaa-lib (~> 1.3.8)
-      multi_json (~> 1.3)
-      multipart-post (~> 1.1)
-      rubyzip (~> 0.9)
-
-GIT
-  remote: git://github.com/cloudfoundry/vmc.git
-  revision: dae764236a39eba06ead4a45778e10f6e71f87d1
-  specs:
-    vmc (0.5.1.rc4)
+    cf (0.5.1.rc4)
       cfoundry (>= 0.5.3.rc5, < 0.6)
       clouseau (~> 0.0)
       interact (~> 0.5)
       json_pure (~> 1.6)
-      manifests-vmc-plugin (>= 0.6.3.rc2, < 0.7)
       mothership (>= 0.5.1, < 1.0)
       multi_json (~> 1.3)
-      tunnel-vmc-plugin (~> 0.2.2)
+
+GIT
+  remote: git://github.com/cloudfoundry/vmc-lib.git
+  revision: 8d256c633baaa01ac82d1a27475910f956801cfb
+  submodules: true
+  specs:
+    cfoundry (0.5.3.rc5)
+      cf-uaa-lib (~> 1.3.10)
+      multi_json (~> 1.3)
+      multipart-post (~> 1.1)
+      rubyzip (~> 0.9)
 
 GEM
   remote: http://rubygems.org/
   specs:
     addressable (2.3.3)
-    caldecott-client (0.0.2)
-      multi_json (~> 1.3)
-    cf-uaa-lib (1.3.8)
+    cf-uaa-lib (1.3.10)
       multi_json
     clouseau (0.0.2)
       rubyzip (~> 0.9.9)
@@ -38,15 +34,10 @@ GEM
     fakefs (0.4.2)
     interact (0.5.2)
     json_pure (1.7.7)
-    manifests-vmc-plugin (0.6.3.rc2)
-      cfoundry (>= 0.5.3.rc4, < 0.6)
-    mime-types (1.21)
     mothership (0.5.1)
     multi_json (1.6.1)
     multipart-post (1.2.0)
     rake (10.0.3)
-    rest-client (1.6.7)
-      mime-types (>= 1.16)
     rr (1.0.4)
     rspec (2.12.0)
       rspec-core (~> 2.12.0)
@@ -57,13 +48,6 @@ GEM
       diff-lcs (~> 1.1.3)
     rspec-mocks (2.12.2)
     rubyzip (0.9.9)
-    tunnel-vmc-plugin (0.2.2)
-      addressable (~> 2.2)
-      caldecott-client (~> 0.0.2)
-      cfoundry (~> 0.5.2)
-      rest-client (~> 1.6)
-      uuidtools (~> 2.1)
-    uuidtools (2.1.3)
     webmock (1.9.0)
       addressable (>= 2.2.7)
       crack (>= 0.1.7)
@@ -72,10 +56,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  cf!
   cfoundry!
   fakefs
   rake
   rr (~> 1.0)
   rspec (~> 2.11)
-  vmc!
   webmock (~> 1.9)

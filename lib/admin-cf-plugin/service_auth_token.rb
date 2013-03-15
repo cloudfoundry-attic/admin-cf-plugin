@@ -1,14 +1,14 @@
-require "vmc/cli"
+require "cf/cli"
 
-module VMCAdmin
-  class ServiceAuthToken < VMC::CLI
+module CFAdmin
+  class ServiceAuthToken < CF::CLI
     def precondition
       unless File.exists? target_file
-        fail "Please select a target with 'vmc target'."
+        fail "Please select a target with 'cf target'."
       end
 
       unless client.logged_in?
-        fail "Please log in with 'vmc login'."
+        fail "Please log in with 'cf login'."
       end
     end
 
