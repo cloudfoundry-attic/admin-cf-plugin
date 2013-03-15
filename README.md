@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/cloudfoundry/admin-vmc-plugin.png)](https://travis-ci.org/cloudfoundry/admin-vmc-plugin)
+[![Build Status](https://travis-ci.org/cloudfoundry/admin-cf-plugin.png)](https://travis-ci.org/cloudfoundry/admin-cf-plugin)
 
 ## Admin
 ### Info
@@ -6,7 +6,7 @@ This plugin allows you to make manual HTTP requests to the Cloud Foundry REST AP
 
 ### Installation
 ```
-gem install admin-vmc-plugin
+gem install admin-cf-plugin
 ```
 
 ### Usage
