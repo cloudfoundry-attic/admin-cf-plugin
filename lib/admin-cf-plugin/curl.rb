@@ -1,3 +1,5 @@
+require "multi_json"
+
 require "cf/cli"
 
 module CFAdmin
@@ -42,10 +44,15 @@ module CFAdmin
           :payload => body,
           :content => body && content)
 
-      if [:json, "application/json"].include? accept
-        puts MultiJson.dump(res, :pretty => true)
+      body = res[:body]
+
+      type = res[:headers]["content-type"]
+
+      if type && type.include?("application/json")
+        json = MultiJson.load(body)
+        puts MultiJson.dump(json, :pretty => true)
       else
-        puts res
+        puts body
       end
     end
 
