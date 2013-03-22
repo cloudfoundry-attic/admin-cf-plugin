@@ -15,4 +15,5 @@ RSpec.configure do |c|
 
   c.include FakeHomeDir
   c.include CommandHelper
+  c.include ConsoleAppSpeckerMatchers
 end
