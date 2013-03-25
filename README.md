@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/cloudfoundry/admin-cf-plugin.png)](https://travis-ci.org/cloudfoundry/admin-cf-plugin)
+[![Gem Version](https://badge.fury.io/rb/admin-cf-plugin.png)](http://badge.fury.io/rb/admin-cf-plugin)
 
 ## Admin
 ### Info
