@@ -6,6 +6,7 @@ require "cfoundry"
 require "cfoundry/test_support"
 require "webmock/rspec"
 require "cf/test_support"
+require "blue-shell"
 
 require "#{SPEC_ROOT}/../lib/admin-cf-plugin/plugin"
 
@@ -14,6 +15,6 @@ RSpec.configure do |c|
   c.mock_with :rr
 
   c.include FakeHomeDir
-  c.include CommandHelper
-  c.include ConsoleAppSpeckerMatchers
+  c.include CliHelper
+  c.include BlueShell::Matchers
 end

@@ -16,4 +16,5 @@ group :test do
   gem "webmock", "~> 1.9"
   gem "rr", "~> 1.0"
   gem "fakefs"
+  gem "blue-shell"
 end
