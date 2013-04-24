@@ -6,8 +6,15 @@
 This plugin allows you to make manual HTTP requests to the Cloud Foundry REST API.
 
 ### Installation
+
+If you have installed CF via gem install, use:
 ```
 gem install admin-cf-plugin
+```
+
+If you have installed CF through bundler and the Gemfile, add the following to your Gemfile:
+```
+gem "admin-cf-plugin"
 ```
 
 ### Usage
