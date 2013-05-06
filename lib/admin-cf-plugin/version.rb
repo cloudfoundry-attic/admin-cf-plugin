@@ -1,3 +1,3 @@
 module CFAdmin
-  VERSION = "0.2.1.rc1".freeze
+  VERSION = "1.0.0".freeze
 end
