@@ -16,5 +16,6 @@ RSpec.configure do |c|
 
   c.include FakeHomeDir
   c.include CliHelper
+  c.include InteractHelper
   c.include BlueShell::Matchers
 end
