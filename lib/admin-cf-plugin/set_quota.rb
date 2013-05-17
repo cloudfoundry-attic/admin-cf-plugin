@@ -1,7 +1,7 @@
 require "cf/cli"
 
 module CFAdmin
-  class DefineQuota < CF::CLI
+  class SetQuota < CF::CLI
     def precondition
       check_target
     end
@@ -13,7 +13,7 @@ module CFAdmin
     input :organization, :argument => :optional,
           :from_given => by_name(:organization),
           :default => proc { client.current_organization || interact }
-    def define_quota
+    def set_quota
       org = input[:organization]
       quota = input[:quota_definition]
 

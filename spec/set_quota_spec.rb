@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe CFAdmin::DefineQuota do
+describe CFAdmin::SetQuota do
   let(:fake_home_dir) { "#{SPEC_ROOT}/fixtures/fake_home_dir" }
 
   stub_home_dir_with { fake_home_dir }
@@ -26,20 +26,20 @@ describe CFAdmin::DefineQuota do
   context "when given an organization and a quota definition" do
     it "promotes the organization to the given quota definition" do
       expect {
-        cf %W[define-quota paid some-org-name]
+        cf %W[set-quota paid some-org-name]
       }.to change {
         organization.quota_definition
       }.from(free_quota).to(paid_quota)
     end
 
     it "shows progress to the user" do
-      cf %W[define-quota paid some-org-name]
+      cf %W[set-quota paid some-org-name]
       expect(output).to say("Setting quota of some-org-name to paid... OK")
     end
 
     it "saves the changes made to the organization" do
       mock(organization).update!
-      cf %W[define-quota paid some-org-name]
+      cf %W[set-quota paid some-org-name]
     end
   end
 
@@ -49,7 +49,7 @@ describe CFAdmin::DefineQuota do
         paid_quota
       end
 
-      cf %W[define-quota --organization some-org-name]
+      cf %W[set-quota --organization some-org-name]
     end
   end
 
@@ -59,7 +59,7 @@ describe CFAdmin::DefineQuota do
 
       it "promotes the current to the given quota definition" do
         expect {
-          cf %W[define-quota paid]
+          cf %W[set-quota paid]
         }.to change {
           organization.quota_definition
         }.from(free_quota).to(paid_quota)
@@ -67,7 +67,7 @@ describe CFAdmin::DefineQuota do
 
       it "saves the changes made to the organization" do
         mock(organization).update!
-        cf %W[define-quota paid]
+        cf %W[set-quota paid]
       end
     end
 
@@ -79,7 +79,7 @@ describe CFAdmin::DefineQuota do
           organization
         end
 
-        cf %W[define-quota paid]
+        cf %W[set-quota paid]
       end
     end
   end
