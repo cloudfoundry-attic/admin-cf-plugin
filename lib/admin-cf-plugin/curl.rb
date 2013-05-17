@@ -10,14 +10,10 @@ module CFAdmin
 
     desc "Execute a raw request"
     group :admin
-    input :mode, :argument => :required,
-      :desc => "Request mode (Get/Put/etc.)"
-    input :path, :argument => :required,
-      :desc => "Request path"
-    input :headers, :argument => :splat,
-      :desc => "Headers (i.e. Foo: bar)"
-    input :body, :alias => "-b",
-      :desc => "Request body"
+    input :mode, :argument => :required, :desc => "Request mode (Get/Put/etc.)"
+    input :path, :argument => :required, :desc => "Request path"
+    input :headers, :argument => :splat, :desc => "Headers (i.e. Foo: bar)"
+    input :body, :alias => "-b", :desc => "Request body"
     def curl
       mode = input[:mode].upcase
       path = input[:path]

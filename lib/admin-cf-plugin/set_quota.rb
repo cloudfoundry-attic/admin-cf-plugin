@@ -9,10 +9,12 @@ module CFAdmin
     desc "Change the quota definition for the given (or current) organization."
     group :admin
     input :quota_definition, :argument => :optional,
-          :from_given => by_name(:quota_definition)
-    input :organization, :argument => :optional,
+          :from_given => by_name(:quota_definition),
+          :desc => "Quota definition to set on the organization"
+    input :organization, :aliases => %w(org o), :argument => :optional,
           :from_given => by_name(:organization),
-          :default => proc { client.current_organization || interact }
+          :default => proc { client.current_organization || interact },
+          :desc => "Organization to update"
     def set_quota
       org = input[:organization]
       quota = input[:quota_definition]
