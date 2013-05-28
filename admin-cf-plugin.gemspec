@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
 
   s.rubyforge_project = "admin-cf-plugin"
 
-  s.add_runtime_dependency "cfoundry", ">= 1.3.0", "< 1.4"
+  s.add_runtime_dependency "cfoundry", ">= 1.4.0", "< 1.5"
 
   s.files         = %w{Rakefile} + Dir.glob("lib/**/*")
   s.test_files    = Dir.glob("spec/**/*")
