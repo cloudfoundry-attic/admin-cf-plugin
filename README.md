@@ -21,6 +21,8 @@ gem "admin-cf-plugin"
 
 ```
 curl MODE PATH HEADERS...                       Execute a raw request
+guid TYPE [NAME]                                Obtain guid of an object(s)
+set-quota [QUOTA_DEFINITION] [ORGANIZATION]     Change the quota definition for the given (or current) organization.
 service-auth-tokens                           	List service auth tokens
 create-service-auth-token [LABEL] [PROVIDER]  	Create a service auth token
 update-service-auth-token [SERVICE_AUTH_TOKEN]	Update a service auth token
