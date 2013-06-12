@@ -11,9 +11,6 @@ require "blue-shell"
 require "#{SPEC_ROOT}/../lib/admin-cf-plugin/plugin"
 
 RSpec.configure do |c|
-  c.include Fake::FakeMethods
-  c.mock_with :rr
-
   c.include FakeHomeDir
   c.include CliHelper
   c.include InteractHelper

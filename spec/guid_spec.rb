@@ -5,9 +5,7 @@ describe CFAdmin::Guid do
   stub_home_dir_with { fake_home_dir }
 
   before do
-    any_instance_of(CFoundry::Client) do |client|
-      stub(client).info { { :version => 2 } }
-    end
+    CFoundry::Client.any_instance.stub(:info) { { :version => 2 } }
   end
 
   let(:api_response) {{

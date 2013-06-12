@@ -5,22 +5,25 @@ describe CFAdmin::SetQuota do
 
   stub_home_dir_with { fake_home_dir }
 
-  let(:paid_quota) { fake :quota_definition, :name => "paid" }
-  let(:free_quota) { fake :quota_definition, :name => "free" }
+  let(:paid_quota) { build :quota_definition, :name => "paid" }
+  let(:free_quota) { build :quota_definition, :name => "free" }
 
   let(:organization) do
-    fake :organization, :name => "some-org-name",
+    build :organization, :name => "some-org-name",
       :quota_definition => free_quota
   end
 
   let(:client) do
-    fake_client :organizations => [organization],
-      :quota_definitions => [paid_quota, free_quota]
+    build(:client).tap do |client|
+      client.stub(
+        :organizations => [organization],
+        :quota_definitions => [paid_quota, free_quota])
+    end
   end
 
   before do
-    stub_client
-    stub(organization).update!
+    CF::CLI.any_instance.stub(:client) { client }
+    organization.stub(:update!)
   end
 
   context "when given an organization and a quota definition" do
@@ -38,14 +41,14 @@ describe CFAdmin::SetQuota do
     end
 
     it "saves the changes made to the organization" do
-      mock(organization).update!
+      organization.should_receive(:update!)
       cf %W[set-quota paid some-org-name]
     end
   end
 
   context "when NOT given a quota definition" do
     it "prompts for the quota definition" do
-      mock_ask("Quota", hash_including(:choices => client.quota_definitions)) do
+      should_ask("Quota", hash_including(:choices => client.quota_definitions)) do
         paid_quota
       end
 
@@ -66,7 +69,7 @@ describe CFAdmin::SetQuota do
       end
 
       it "saves the changes made to the organization" do
-        mock(organization).update!
+        organization.should_receive(:update!)
         cf %W[set-quota paid]
       end
     end
@@ -75,7 +78,7 @@ describe CFAdmin::SetQuota do
       before { client.current_organization = nil }
 
       it "prompts for the organization" do
-        mock_ask("Organization", hash_including(:choices => client.organizations)) do
+        should_ask("Organization", hash_including(:choices => client.organizations)) do
           organization
         end
 
