@@ -1,5 +1,0 @@
-.rbenv-gemsets
-.idea
-*.gem
-.bundle
-pkg/*
